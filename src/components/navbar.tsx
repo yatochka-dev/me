@@ -7,13 +7,14 @@ import { Button } from "@/components/ui/button"
 import { ModeToggle } from "@/components/mode-toggle"
 import LanguageSwitcher from "@/components/language-switcher"
 import { Menu, X } from "lucide-react"
+import {Dictionary} from "@/lib/dictionaries";
 
 export default function Navbar({
   lang,
   dictionary,
 }: {
   lang: string
-  dictionary: any
+  dictionary: Dictionary
 }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const pathname = usePathname()
@@ -43,13 +44,13 @@ export default function Navbar({
         <div className="flex h-16 items-center justify-between">
           <div className="flex items-center">
             <Link href={`/${lang}`} className="text-xl font-bold transition-colors hover:text-primary">
-              Portfolio
+              Yatochka
             </Link>
           </div>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-6">
-            <Link href={`/${lang}`} className="text-sm font-medium transition-colors hover:text-primary">
+            <Link href={`/${lang}`} className="text-sm font-medium transition-colors hover:text-primary ml-6">
               {dictionary.home}
             </Link>
             <Link href={`/${lang}#projects`} className="text-sm font-medium transition-colors hover:text-primary">
@@ -61,7 +62,7 @@ export default function Navbar({
           </nav>
 
           <div className="hidden md:flex items-center space-x-4">
-            <LanguageSwitcher currentLang={lang} label={dictionary.languageSwitcher} />
+            <LanguageSwitcher currentLang={lang} label={dictionary.languageSwitcher as string} />
             <ModeToggle />
           </div>
 
@@ -89,7 +90,7 @@ export default function Navbar({
                 {dictionary.faq}
               </Link>
               <div className="flex items-center space-x-4 pt-2">
-                <LanguageSwitcher currentLang={lang} label={dictionary.languageSwitcher} />
+                <LanguageSwitcher currentLang={lang} label={dictionary.languageSwitcher as string} />
                 <ModeToggle />
               </div>
             </nav>

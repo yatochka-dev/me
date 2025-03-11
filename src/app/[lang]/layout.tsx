@@ -17,12 +17,13 @@ export default async function RootLayout({
   params,
 }: {
   children: React.ReactNode
-  params: { lang: string }
+  params: Promise<{ lang: string }>
 }) {
+  const {lang} = await params
   // Add error handling for the dictionary fetch
   let dictionary
   try {
-    dictionary = await getDictionary(params.lang)
+    dictionary = await getDictionary(lang);
   } catch (error) {
     console.error("Error loading dictionary:", error)
     // Fallback to a basic structure if dictionary fails to load
@@ -41,14 +42,16 @@ export default async function RootLayout({
   }
 
   return (
-    <html lang={params.lang} suppressHydrationWarning>
+    <html lang={lang} suppressHydrationWarning>
       <body className={`${inter.className} min-h-screen flex flex-col`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-          <Navbar lang={params.lang} dictionary={dictionary.navigation} />
+          {/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */}
+          <Navbar lang={lang} dictionary={dictionary.navigation} />
           <main className="flex-grow">
             {/* Ensure children is always rendered, even if it's null */}
             {children ?? <div>Loading...</div>}
           </main>
+          {/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */}
           <Footer dictionary={dictionary.footer} />
         </ThemeProvider>
       </body>

@@ -5,8 +5,12 @@ const dictionaries: Record<string, () => Promise<any>> = {
   ru: () => import("../dictionaries/ru.json").then((module) => module.default),
 }
 
-
-type Dictionary = Record<string, any>
+export enum Language {
+  en = "en",
+  he = "he",
+  ru = "ru",
+}
+export type Dictionary = Record<string, any>
 
 export const getDictionary = async (locale: string): Promise<Dictionary> => {
   // Add error handling and fallback

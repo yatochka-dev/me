@@ -22,7 +22,7 @@ export default function HeroSection({
 
   useEffect(() => {
     if (isInView) {
-      controls.start("visible")
+      void controls.start("visible")
     }
   }, [controls, isInView])
 
@@ -58,7 +58,7 @@ export default function HeroSection({
             />
           </div>
           <p className="text-xl md:text-2xl text-muted-foreground mb-8">{dictionary.subtitle}</p>
-          <Button size="lg" onClick={scrollToProjects} className="transition-transform hover:scale-105">
+          <Button size="lg" onClick={scrollToProjects} className=" h-12 px-9 transition-transform hover:scale-105">
             {dictionary.cta}
           </Button>
         </div>
