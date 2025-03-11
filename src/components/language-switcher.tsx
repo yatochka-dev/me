@@ -23,9 +23,10 @@ export default function LanguageSwitcher({
 
   const switchLanguage = (locale: string) => {
     // Get the path without the locale prefix
-    const pathWithoutLocale = pathname.replace(/^\/(en|he|ru)/, "") || "/"
-    const newPath = `/${locale}${pathWithoutLocale}`
-    router.push(newPath)
+    // const pathWithoutLocale = pathname.replace(/^\/(en|he|ru)/, "") || "/"
+    // const newPath = `/${locale}${pathWithoutLocale}`
+    // router.push(newPath)
+    router.replace(pathname, {locale})
   }
 
   return (
@@ -42,6 +43,7 @@ export default function LanguageSwitcher({
             key={language.code}
             onClick={() => switchLanguage(language.code)}
             className={currentLang === language.code ? "bg-muted" : ""}
+
           >
             {language.name}
           </DropdownMenuItem>
