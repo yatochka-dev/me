@@ -6,6 +6,10 @@ import {Dictionary, getDictionary} from "@/lib/dictionaries"
 import Navbar from "@/components/navbar"
 import Footer from "@/components/footer"
 import ClickSpark from "@/components/animations/ClickSpark/ClickSpark";
+import {routing, ZLocale} from '@/i18n/routing';
+import {notFound} from "next/navigation";
+import {getMessages} from "next-intl/server";
+import {NextIntlClientProvider} from "next-intl";
 
 const inter = Inter({ subsets: ["latin", "cyrillic"] })
 
@@ -21,6 +25,13 @@ export default async function RootLayout({
   params: Promise<{ lang: string }>
 }) {
   const {lang} = await params
+
+  if (!routing.locales.includes(ZLocale.parse(lang))) {
+    notFound();
+  }
+
+  const messages = await getMessages();
+
   // Add error handling for the dictionary fetch
   let dictionary: Dictionary
   try {
@@ -45,7 +56,9 @@ export default async function RootLayout({
   return (
     <html lang={lang} suppressHydrationWarning>
       <body className={`${inter.className} min-h-screen flex flex-col`} dir={lang === "he" ? "rtl" : "ltr"}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+      <NextIntlClientProvider messages={messages}>
+
+      <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           {/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */}
           <ClickSpark>
             {/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */}
@@ -58,6 +71,7 @@ export default async function RootLayout({
           <Footer dictionary={dictionary.footer} />
           </ClickSpark>
         </ThemeProvider>
+        </NextIntlClientProvider>
       </body>
     </html>
   )

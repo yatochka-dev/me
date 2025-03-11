@@ -1,8 +1,8 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import Link from "next/link"
-import { usePathname } from "next/navigation"
+import {Link} from "@/i18n/navigation"
+import { usePathname } from "@/i18n/navigation"
 import { Button } from "@/components/ui/button"
 import { ModeToggle } from "@/components/mode-toggle"
 import LanguageSwitcher from "@/components/language-switcher"

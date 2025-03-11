@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import '../styles/globals.css'
-import ClickSpark from "@/components/animations/ClickSpark/ClickSpark";
 
 export const metadata: Metadata = {
   title: 'v0 App',
@@ -14,6 +13,10 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-children
+    <html lang="en">
+      <body>
+          {children}
+      </body>
+    </html>
   )
 }

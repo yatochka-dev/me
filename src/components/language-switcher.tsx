@@ -1,6 +1,6 @@
 "use client"
 
-import { useRouter, usePathname } from "next/navigation"
+import { useRouter, usePathname } from "@/i18n/navigation"
 import { Button } from "@/components/ui/button"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { Globe } from "lucide-react"
