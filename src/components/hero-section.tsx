@@ -63,7 +63,7 @@ export default function HeroSection({
                 className="text-xl md:text-3xl text-muted-foreground mb-8 text-center flex items-center justify-center"
             />
           </div>
-          <Button size="lg" onClick={scrollToProjects} className=" h-12 px-9 transition-transform hover:scale-105">
+          <Button size="lg" onClick={scrollToProjects} className=" h-12 px-9 transition-transform hover:scale-105 mt-">
             {dictionary.cta}
           </Button>
         </div>

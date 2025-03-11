@@ -41,7 +41,7 @@ export default function Navbar({
       }`}
     >
       <div className="container mx-auto px-4">
-        <div className="flex h-16 items-center justify-between">
+        <div className="flex h-16 items-center justify-between" dir={'ltr'}>
           <div className="flex items-center">
             <Link href={`/${lang}`} className="text-xl font-bold transition-colors hover:text-primary">
               Yatochka
@@ -89,9 +89,9 @@ export default function Navbar({
               <Link href={`/${lang}#faq`} className="text-sm font-medium transition-colors hover:text-primary">
                 {dictionary.faq}
               </Link>
-              <div className="flex items-center space-x-4 pt-2">
-                <LanguageSwitcher currentLang={lang} label={dictionary.languageSwitcher as string} />
+              <div className="flex items-center space-x-4 pt-2" dir={'ltr'}>
                 <ModeToggle />
+                <LanguageSwitcher currentLang={lang} label={dictionary.languageSwitcher as string} />
               </div>
             </nav>
           </div>
