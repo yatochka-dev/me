@@ -1,0 +1,28 @@
+/* Import the main globals.css file */
+@import "../../styles/globals.css";
+
+/* RTL support for Hebrew */
+[lang="he"] {
+  direction: rtl;
+}
+
+/* Print styles */
+@media print {
+  body {
+    @apply bg-white text-black;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .print-only {
+    display: block !important;
+  }
+
+  a {
+    text-decoration: none !important;
+    color: black !important;
+  }
+}
+

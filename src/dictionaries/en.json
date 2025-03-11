@@ -1,0 +1,47 @@
+{
+  "navigation": {
+    "home": "Home",
+    "projects": "Projects",
+    "faq": "FAQ",
+    "languageSwitcher": "Change language"
+  },
+  "hero": {
+    "title": "Hello, I'm a Developer",
+    "subtitle": "Building beautiful and functional web experiences",
+    "cta": "View My Work"
+  },
+  "projects": {
+    "title": "My Projects",
+    "description": "Here are some of the projects I've worked on"
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "items": [
+      {
+        "question": "What services do you offer?",
+        "answer": "I specialize in web development, focusing on creating responsive, user-friendly websites and web applications using modern technologies like React, Next.js, and Tailwind CSS."
+      },
+      {
+        "question": "How long does a typical project take?",
+        "answer": "Project timelines vary depending on complexity and scope. A simple website might take 2-4 weeks, while more complex applications can take several months. I'll provide a detailed timeline during our initial consultation."
+      },
+      {
+        "question": "Do you offer maintenance after the project is complete?",
+        "answer": "Yes, I offer ongoing maintenance and support packages to ensure your website remains up-to-date and secure. We can discuss these options based on your specific needs."
+      },
+      {
+        "question": "What is your design process?",
+        "answer": "My design process begins with understanding your requirements, followed by wireframing, prototyping, and iterative design. I emphasize user experience and ensure designs are both aesthetically pleasing and functional."
+      },
+      {
+        "question": "Can you work with existing designs or brand guidelines?",
+        "answer": "I'm experienced in implementing existing designs and adhering to established brand guidelines to ensure consistency across your digital presence."
+      }
+    ]
+  },
+  "footer": {
+    "copyright": "© 2025 Portfolio. All rights reserved.",
+    "socialLinks": "Connect with me"
+  }
+}
+
