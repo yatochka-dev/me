@@ -2,9 +2,10 @@ import type React from "react"
 import "./globals.css"
 import { Inter } from "next/font/google"
 import { ThemeProvider } from "@/components/theme-provider"
-import { getDictionary } from "@/lib/dictionaries"
+import {Dictionary, getDictionary} from "@/lib/dictionaries"
 import Navbar from "@/components/navbar"
 import Footer from "@/components/footer"
+import ClickSpark from "@/components/animations/ClickSpark/ClickSpark";
 
 const inter = Inter({ subsets: ["latin", "cyrillic"] })
 
@@ -21,7 +22,7 @@ export default async function RootLayout({
 }) {
   const {lang} = await params
   // Add error handling for the dictionary fetch
-  let dictionary
+  let dictionary: Dictionary
   try {
     dictionary = await getDictionary(lang);
   } catch (error) {
@@ -43,9 +44,11 @@ export default async function RootLayout({
 
   return (
     <html lang={lang} suppressHydrationWarning>
-      <body className={`${inter.className} min-h-screen flex flex-col`}>
+      <body className={`${inter.className} min-h-screen flex flex-col`} dir={lang === "he" ? "rtl" : "ltr"}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           {/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */}
+          <ClickSpark>
+            {/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */}
           <Navbar lang={lang} dictionary={dictionary.navigation} />
           <main className="flex-grow">
             {/* Ensure children is always rendered, even if it's null */}
@@ -53,6 +56,7 @@ export default async function RootLayout({
           </main>
           {/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */}
           <Footer dictionary={dictionary.footer} />
+          </ClickSpark>
         </ThemeProvider>
       </body>
     </html>
