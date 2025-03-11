@@ -63,12 +63,12 @@ export default function HeroSection({
                 className="text-xl md:text-3xl text-muted-foreground mb-8 text-center flex items-center justify-center"
             />
           </div>
-          <Button size="lg" onClick={scrollToProjects} className=" h-12 px-9 transition-transform hover:scale-105 mt-">
+          <Button size="lg" onClick={scrollToProjects} className=" h-12 px-9 transition-transform hover:scale-105 mt-6">
             {dictionary.cta}
           </Button>
         </div>
       </div>
-      <div className={'absolute w-full h-[700px] max-md:top-[5.5%] left-[0%] '}>
+      <div className={'absolute w-full h-[400px] md:h-[700px] max-md:top-[10%] left-[0%] '} >
         <Threads
             color={resolvedTheme === "light" ? [0, 0, 0] : [1, 1, 1]}
           amplitude={1.5}
