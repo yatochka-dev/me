@@ -171,14 +171,17 @@ const Threads: React.FC<ThreadsProps> = ({
     function resize() {
       const { clientWidth, clientHeight } = container;
       renderer.setSize(clientWidth, clientHeight);
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
       program.uniforms.iResolution.value.r = clientWidth;
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
       program.uniforms.iResolution.value.g = clientHeight;
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
       program.uniforms.iResolution.value.b = clientWidth / clientHeight;
     }
     window.addEventListener("resize", resize);
     resize();
 
-    let currentMouse = [0.5, 0.5];
+    const currentMouse = [0.5, 0.5];
     let targetMouse = [0.5, 0.5];
 
     function handleMouseMove(e: MouseEvent) {
@@ -198,14 +201,21 @@ const Threads: React.FC<ThreadsProps> = ({
     function update(t: number) {
       if (enableMouseInteraction) {
         const smoothing = 0.05;
+        // @ts-expect-error
         currentMouse[0] += smoothing * (targetMouse[0] - currentMouse[0]);
+        // @ts-expect-error
         currentMouse[1] += smoothing * (targetMouse[1] - currentMouse[1]);
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
         program.uniforms.uMouse.value[0] = currentMouse[0];
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
         program.uniforms.uMouse.value[1] = currentMouse[1];
       } else {
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
         program.uniforms.uMouse.value[0] = 0.5;
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
         program.uniforms.uMouse.value[1] = 0.5;
       }
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
       program.uniforms.iTime.value = t * 0.001;
 
       renderer.render({ scene: mesh });

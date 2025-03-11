@@ -1,4 +1,11 @@
-export const projectsData = [
+export interface ProjectData {
+  title: Record<"en" | "he" | "ru", string>;
+  description: Record<"en" | "he" | "ru", string>;
+  image: string;
+  link: string;
+}
+
+export const projectsData: ProjectData[] = [
   {
     title: {
       en: "E-Commerce Platform",
@@ -10,7 +17,7 @@ export const projectsData = [
       he: "פלטפורמת מסחר אלקטרוני מודרנית שנבנתה עם Next.js ו-Tailwind CSS, הכוללת רשימות מוצרים, פונקציונליות עגלה ותשלום.",
       ru: "Современная платформа электронной коммерции, созданная с использованием Next.js и Tailwind CSS, с листингами продуктов, функциями корзины и оформлением заказа.",
     },
-    image: "/placeholder.svg?height=300&width=500",
+    image: "/placeholder.jpg?height=300&width=500",
     link: "https://example.com/project1",
   },
   {
@@ -24,7 +31,7 @@ export const projectsData = [
       he: "אתר פורטפוליו רספונסיבי לצלם, המציג את עבודתם עם גלריה יפה וטופס יצירת קשר.",
       ru: "Адаптивный сайт-портфолио для фотографа, демонстрирующий их работы с красивой галереей и контактной формой.",
     },
-    image: "/placeholder.svg?height=300&width=500",
+    image: "/placeholder.jpg?height=300&width=500",
     link: "https://example.com/project2",
   },
   {
@@ -38,7 +45,7 @@ export const projectsData = [
       he: "אפליקציית ניהול משימות עם פונקציונליות גרור ושחרר, אימות משתמשים ועדכונים בזמן אמת.",
       ru: "Приложение для управления задачами с функцией перетаскивания, аутентификацией пользователей и обновлениями в реальном времени.",
     },
-    image: "/placeholder.svg?height=300&width=500",
+    image: "/placeholder.jpg?height=300&width=500",
     link: "https://example.com/project3",
   },
   {
@@ -52,7 +59,7 @@ export const projectsData = [
       he: "פלטפורמת בלוג מלאה עם תמיכה ב-markdown, קטגוריות, תגיות ולוח מחוונים מנהל חזק.",
       ru: "Полнофункциональная блог-платформа с поддержкой markdown, категориями, тегами и мощной панелью администратора.",
     },
-    image: "/placeholder.svg?height=300&width=500",
+    image: "/placeholder.jpg?height=300&width=500",
     link: "https://example.com/project4",
   },
   {
@@ -66,7 +73,7 @@ export const projectsData = [
       he: "אפליקציית מזג אוויר המספקת נתוני מזג אוויר בזמן אמת, תחזיות וויזואליזציות יפות.",
       ru: "Погодное приложение, предоставляющее данные о погоде в реальном времени, прогнозы и красивые визуализации.",
     },
-    image: "/placeholder.svg?height=300&width=500",
+    image: "/placeholder.jpg?height=300&width=500",
     link: "https://example.com/project5",
   },
   {
@@ -80,7 +87,7 @@ export const projectsData = [
       he: "אפליקציית מעקב כושר העוזרת למשתמשים לעקוב אחר האימונים שלהם, להגדיר יעדים ולעקוב אחר ההתקדמות לאורך זמן.",
       ru: "Приложение для отслеживания фитнеса, которое помогает пользователям контролировать свои тренировки, ставить цели и отслеживать прогресс с течением времени.",
     },
-    image: "/placeholder.svg?height=300&width=500",
+    image: "/placeholder.jpg?height=300&width=500",
     link: "https://example.com/project6",
   },
 ]

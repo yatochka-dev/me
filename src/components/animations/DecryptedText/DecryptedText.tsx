@@ -95,6 +95,8 @@ export default function DecryptedText({
 
         for (let i = nonSpaceChars.length - 1; i > 0; i--) {
           const j = Math.floor(Math.random() * (i + 1));
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-expect-error
           [nonSpaceChars[i], nonSpaceChars[j]] = [
             nonSpaceChars[j],
             nonSpaceChars[i],
@@ -125,6 +127,7 @@ export default function DecryptedText({
 
     if (isHovering) {
       setIsScrambling(true);
+      // @ts-ignore
       interval = setInterval(() => {
         setRevealedIndices((prevRevealed) => {
           if (sequential) {

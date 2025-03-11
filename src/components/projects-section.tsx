@@ -5,9 +5,8 @@ import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from "@/comp
 import { Button } from "@/components/ui/button"
 import { motion } from "framer-motion"
 import { ExternalLink } from "lucide-react"
-import ScrollReveal from "@/components/animations/ScrollReveal/ScrollReveal"
-import DecryptedText from "@/components/animations/DecryptedText/DecryptedText";
-import StarBorder from "./animations/StarBorder/StarBorder"
+import {Dictionary, Language} from "@/lib/dictionaries";
+import {ProjectData} from "@/data/projects";
 
 // Remove the import of projectsData and receive it as a prop instead
 export default function ProjectsSection({
@@ -15,9 +14,9 @@ export default function ProjectsSection({
   lang,
   projects,
 }: {
-  dictionary: any
-  lang: string
-  projects: any[]
+  dictionary: Dictionary
+  lang: Language
+  projects: ProjectData[]
 }) {
   const containerRef = useRef(null)
 
@@ -25,19 +24,7 @@ export default function ProjectsSection({
     <section id="projects" className="py-20">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          {/*<h2 className="text-3xl md:text-4xl font-bold mb-4">{dictionary.title}</h2>*/}
-          <DecryptedText
-              text={dictionary.title ?? ""}
-              animateOn={"view"}
-              speed={130}
-              maxIterations={20}
-              revealDirection={"start"}
-              sequential={true}
-              // characters="ABCD1234!?"
-              className="revealed"
-              parentClassName="text-3xl md:text-4xl font-bold mb-4"
-              encryptedClassName="encrypted"
-          />
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">{dictionary.title}</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">{dictionary.description}</p>
         </div>
 
@@ -68,20 +55,20 @@ function ProjectCard({
   project,
   lang,
 }: {
-  project: any
-  lang: string
+  project: ProjectData
+  lang: Language
 }) {
   const title = project.title[lang] || project.title.en
   const description = project.description[lang] || project.description.en
 
   return (
-    <StarBorder
-  as="div"
-  className="rounded-lg border bg-card text-card-foreground shadow-sm h-full overflow-hidden transition-all duration-300 hover:shadow-lg"
-  color="red"
-  speed="5s"
-      >
-
+    <motion.div
+      variants={{
+        hidden: { opacity: 0, y: 30 },
+        visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+      }}
+    >
+      <Card className="h-full overflow-hidden transition-all duration-300 hover:shadow-lg">
         <div className="aspect-video overflow-hidden">
           <img
             src={project.image || "/placeholder.svg?height=300&width=500"}
@@ -101,7 +88,8 @@ function ProjectCard({
             </a>
           </Button>
         </CardFooter>
-    </StarBorder>
+      </Card>
+    </motion.div>
   )
 }
 

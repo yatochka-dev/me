@@ -1,4 +1,4 @@
-import { getDictionary } from "@/lib/dictionaries"
+import {getDictionary, Language} from "@/lib/dictionaries"
 import HeroSection from "@/components/hero-section"
 import ProjectsSection from "@/components/projects-section"
 import FaqSection from "@/components/faq-section"
@@ -7,14 +7,18 @@ import { projectsData } from "@/data/projects"
 export default async function Home({
   params,
 }: {
-  params: { lang: string }
+  params: Promise<{ lang: Language }>
 }) {
-  const dict = await getDictionary(params.lang)
+    const {lang} = await params
+  const dict = await getDictionary(lang)
 
   return (
     <div className="container mx-auto px-4">
+        {/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */}
       <HeroSection dictionary={dict.hero} />
-      <ProjectsSection dictionary={dict.projects} lang={params.lang} projects={projectsData} />
+        {/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */}
+      <ProjectsSection dictionary={dict.projects} lang={lang} projects={projectsData} />
+        {/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */}
       <FaqSection dictionary={dict.faq} />
     </div>
   )

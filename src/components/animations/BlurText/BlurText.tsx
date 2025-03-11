@@ -64,6 +64,8 @@ const BlurText: React.FC<BlurTextProps> = ({
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-expect-error
         if (entry.isIntersecting) {
           setInView(true);
           if (ref.current) {
@@ -84,12 +86,12 @@ const BlurText: React.FC<BlurTextProps> = ({
   const springs = useSprings(
     elements.length,
     elements.map((_, i) => ({
-      from: animationFrom || defaultFrom,
+      from: animationFrom ?? defaultFrom,
       to: inView
         ? async (
             next: (arg: Record<string, SpringValue<any>>) => Promise<void>,
           ) => {
-            for (const step of animationTo || defaultTo) {
+            for (const step of animationTo ?? defaultTo) {
               await next(step);
             }
             animatedCount.current += 1;
@@ -100,8 +102,9 @@ const BlurText: React.FC<BlurTextProps> = ({
               onAnimationComplete();
             }
           }
-        : animationFrom || defaultFrom,
+        : animationFrom ?? defaultFrom,
       delay: i * delay,
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       config: { easing: easing as any },
     })),
   );

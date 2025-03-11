@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useMemo, ReactNode, RefObject } from "react";
+import React, { useEffect, useRef, useMemo, type ReactNode, type RefObject } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -34,7 +34,7 @@ const ScrollReveal: React.FC<ScrollRevealProps> = ({
   const splitText = useMemo(() => {
     const text = typeof children === "string" ? children : "";
     return text.split(/(\s+)/).map((word, index) => {
-      if (word.match(/^\s+$/)) return word;
+      if (/^\s+$/.exec(word)) return word;
       return (
         <span className="inline-block" key={index}>
           {word}
@@ -48,9 +48,7 @@ const ScrollReveal: React.FC<ScrollRevealProps> = ({
     if (!el) return;
 
     const scroller =
-      scrollContainerRef && scrollContainerRef.current
-        ? scrollContainerRef.current
-        : window;
+      scrollContainerRef?.current ?? window;
 
     gsap.fromTo(
       el,
