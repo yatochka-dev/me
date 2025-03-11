@@ -79,8 +79,8 @@ export default function Navbar({
 
           {/* Mobile Menu Button */}
           {/*<div className="flex md:hidden">*/}
-          <Drawer>
-            <DrawerTrigger asChild>
+          <Drawer >
+            <DrawerTrigger className={"md:hidden"} asChild>
               <Button variant="ghost" size="icon" onClick={() => setIsMenuOpen(!isMenuOpen)}>
                 {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
               </Button>
@@ -96,7 +96,7 @@ export default function Navbar({
               {/*    <Button variant="outline">Cancel</Button>*/}
               {/*  </DrawerClose>*/}
               {/*</DrawerFooter>*/}
-              <div className="md:hidden">
+              <div>
                 <nav className="py-20 gap-4 flex flex-col justify-center items-center">
                <div className={' flex-row  space-x-7 '}>
                  <Link href={`/${lang}`} className="text-lg font-medium transition-colors hover:text-primary">
