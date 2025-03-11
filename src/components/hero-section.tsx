@@ -68,7 +68,7 @@ export default function HeroSection({
           </Button>
         </div>
       </div>
-      <div className={'absolute w-full h-[700px]  left-[0%] '}>
+      <div className={'absolute w-full h-[700px] max-md:top-[5.5%] left-[0%] '}>
         <Threads
             color={resolvedTheme === "light" ? [0, 0, 0] : [1, 1, 1]}
           amplitude={1.5}
