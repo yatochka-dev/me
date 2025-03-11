@@ -8,6 +8,17 @@ import { ModeToggle } from "@/components/mode-toggle"
 import LanguageSwitcher from "@/components/language-switcher"
 import { Menu, X } from "lucide-react"
 import {Dictionary} from "@/lib/dictionaries";
+import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "@/components/ui/drawer"
+
 
 export default function Navbar({
   lang,
@@ -62,41 +73,61 @@ export default function Navbar({
           </nav>
 
           <div className="hidden md:flex items-center space-x-4">
-            <LanguageSwitcher currentLang={lang} label={dictionary.languageSwitcher as string} />
             <ModeToggle />
+            <LanguageSwitcher currentLang={lang} label={dictionary.languageSwitcher as string} />
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="flex md:hidden">
-            <Button variant="ghost" size="icon" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-              {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-            </Button>
-          </div>
+          {/*<div className="flex md:hidden">*/}
+          <Drawer>
+            <DrawerTrigger asChild>
+              <Button variant="ghost" size="icon" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+                {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              </Button>
+            </DrawerTrigger>
+            <DrawerContent>
+              {/*<DrawerHeader>*/}
+              {/*  <DrawerTitle>Are you absolutely sure?</DrawerTitle>*/}
+              {/*  <DrawerDescription>This action cannot be undone.</DrawerDescription>*/}
+              {/*</DrawerHeader>*/}
+              {/*<DrawerFooter>*/}
+              {/*  <Button>Submit</Button>*/}
+              {/*  <DrawerClose>*/}
+              {/*    <Button variant="outline">Cancel</Button>*/}
+              {/*  </DrawerClose>*/}
+              {/*</DrawerFooter>*/}
+              <div className="md:hidden">
+                <nav className="py-20 gap-4 flex flex-col justify-center items-center">
+               <div className={' flex-row  space-x-7 '}>
+                 <Link href={`/${lang}`} className="text-lg font-medium transition-colors hover:text-primary">
+                   {dictionary.home}
+                 </Link>
+                 <Link href={`/${lang}#projects`} className="text-lg font-medium transition-colors hover:text-primary">
+                   {dictionary.projects}
+                 </Link>
+                 <Link href={`/${lang}#faq`} className="text-lg font-medium transition-colors hover:text-primary">
+                   {dictionary.faq}
+                 </Link>
+               </div>
+                  <div className="flex items-center space-x-4 pt-2" dir={'ltr'}>
+                    <ModeToggle/>
+                    <LanguageSwitcher currentLang={lang} label={dictionary.languageSwitcher as string}/>
+                  </div>
+                </nav>
+
+              </div>
+            </DrawerContent>
+          </Drawer>
+
+          {/*</div>*/}
+
         </div>
       </div>
 
       {/* Mobile Menu */}
-      {isMenuOpen && (
-        <div className="md:hidden">
-          <div className="container mx-auto px-4 py-4 bg-background border-t">
-            <nav className="flex flex-col space-y-4">
-              <Link href={`/${lang}`} className="text-sm font-medium transition-colors hover:text-primary">
-                {dictionary.home}
-              </Link>
-              <Link href={`/${lang}#projects`} className="text-sm font-medium transition-colors hover:text-primary">
-                {dictionary.projects}
-              </Link>
-              <Link href={`/${lang}#faq`} className="text-sm font-medium transition-colors hover:text-primary">
-                {dictionary.faq}
-              </Link>
-              <div className="flex items-center space-x-4 pt-2" dir={'ltr'}>
-                <ModeToggle />
-                <LanguageSwitcher currentLang={lang} label={dictionary.languageSwitcher as string} />
-              </div>
-            </nav>
-          </div>
-        </div>
-      )}
+      {/*{isMenuOpen && (*/}
+
+      {/*)}*/}
     </header>
   )
 }
