@@ -81,7 +81,7 @@ export default function Navbar({
           {/*<div className="flex md:hidden">*/}
           <Drawer >
             <DrawerTrigger className={"md:hidden"} asChild>
-              <Button variant="ghost" size="icon" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+              <Button variant="ghost" size="icon" onClick={() => setIsMenuOpen(!isMenuOpen)} aria-label={"Toggle menu"} role={"menu"}>
                 {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
               </Button>
             </DrawerTrigger>
