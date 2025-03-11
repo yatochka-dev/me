@@ -35,7 +35,7 @@ export default function HeroSection({
   }
 
   return (
-    <section className="py-20 min-h-screen md:py-32">
+    <section className="py-20 max-md:mt-10 min-h-screen md:py-32">
       <div className="container mx-auto px-4">
         <div
 
