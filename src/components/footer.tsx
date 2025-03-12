@@ -25,11 +25,11 @@ export default function Footer({
           <div className="flex flex-col items-center md:items-end">
             <h3 className="text-sm font-medium mb-4">{dictionary.socialLinks}</h3>
             <div className="flex space-x-4">
-              <SocialLink href="https://github.com" icon={<Github className="h-5 w-5" />} label="GitHub" />
-              <SocialLink href="https://instagram.com" icon={<Instagram className="h-5 w-5" />} label="Instagram" />
-              <SocialLink href="https://linkedin.com" icon={<Linkedin className="h-5 w-5" />} label="LinkedIn" />
-              <SocialLink href="https://facebook.com" icon={<Facebook className="h-5 w-5" />} label="Facebook" />
-              <SocialLink href="mailto:example@example.com" icon={<Mail className="h-5 w-5" />} label="Email" />
+              <SocialLink href="https://github.com/yatochka-dev" icon={<Github className="h-5 w-5" />} label="GitHub" />
+              <SocialLink href="https://www.instagram.com/sagan.philip?igsh=MXdyNHFsZzZkNTdvZA==" icon={<Instagram className="h-5 w-5" />} label="Instagram" />
+              <SocialLink href="https://www.linkedin.com/in/philip-sagan-896586267?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" icon={<Linkedin className="h-5 w-5" />} label="LinkedIn" />
+            
+              <SocialLink href="mailto: philip.chef13@gmail.com" icon={<Mail className="h-5 w-5" />} label="Email" />
             </div>
           </div>
         </div>
