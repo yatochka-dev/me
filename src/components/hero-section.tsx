@@ -70,7 +70,7 @@ export default function HeroSection({
       </div>
       <div className={'absolute w-full h-[400px] md:h-[700px] max-md:top-[10%] left-[0%] '} >
         <Threads
-            color={resolvedTheme === "light" ? [0, 0, 0] : [1, 1, 1]}
+            color={resolvedTheme === "light" ? [0, 0, 0] : [255, 255, 255]}
           amplitude={1.5}
             distance={0.1}
         />
