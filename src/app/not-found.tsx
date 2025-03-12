@@ -34,11 +34,11 @@ export default function NotFound() {
       <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
         <div className="h-screen w-full flex flex-col items-center justify-center cursor-pointer" onClick={cancelRedirect}>
       <div onClick={sendBack} className={"flex flex-col items-center justify-center cursor-pointer"}>
-        <FuzzyText hoverIntensity={2} enableHover baseIntensity={0.5}>
+        <FuzzyText hoverIntensity={1.5} enableHover baseIntensity={0.3}>
           404
         </FuzzyText>
         <br />
-        <FuzzyText hoverIntensity={2} enableHover baseIntensity={0.5}>
+        <FuzzyText hoverIntensity={1.5} enableHover baseIntensity={0.3}>
           Not Found
         </FuzzyText>
 
