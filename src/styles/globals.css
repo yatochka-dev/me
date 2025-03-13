@@ -87,4 +87,8 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  .center {
+    @apply top-1/2 left-1/2;
+  }
 }

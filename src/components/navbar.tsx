@@ -5,9 +5,9 @@ import { Link, usePathname } from "@/i18n/navigation";
 import { Button } from "@/components/ui/button";
 import { ModeToggle } from "@/components/mode-toggle";
 import LanguageSwitcher from "@/components/language-switcher";
-import { Menu, X } from "lucide-react";
 import { Dictionary } from "@/lib/dictionaries";
 import { Drawer, DrawerContent, DrawerTrigger } from "@/components/ui/drawer";
+import { AnimatedMenuIcon } from "@/components/animations/AnimatedMenuIcon/AnimatedMenuIcon";
 
 export default function Navbar({
   lang,
@@ -85,7 +85,7 @@ export default function Navbar({
 
           {/* Mobile Menu Button */}
           {/*<div className="flex md:hidden">*/}
-          <Drawer>
+          <Drawer open={isMenuOpen} onClose={() => setIsMenuOpen(false)}>
             <DrawerTrigger className={"md:hidden"} asChild>
               <Button
                 variant="ghost"
@@ -93,12 +93,11 @@ export default function Navbar({
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 aria-label={"Toggle menu"}
                 role={"menu"}
+                className={
+                  "flex flex-col justify-center gap-y-1.5 bg-background"
+                }
               >
-                {isMenuOpen ? (
-                  <X className="h-6 w-6" />
-                ) : (
-                  <Menu className="h-6 w-6" />
-                )}
+                <AnimatedMenuIcon isMenuOpen={isMenuOpen} />
               </Button>
             </DrawerTrigger>
             <DrawerContent>
