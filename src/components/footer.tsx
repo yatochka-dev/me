@@ -1,10 +1,32 @@
-// This can be a client component since it doesn't fetch data
 "use client";
 
 import type React from "react";
 
 import { Link } from "@/i18n/navigation";
 import { Github, Instagram, Linkedin, Mail } from "lucide-react";
+
+const socialLinks = [
+  {
+    href: "https://github.com/yatochka-dev",
+    icon: <Github className="h-5 w-5" />,
+    label: "GitHub",
+  },
+  {
+    href: "https://www.instagram.com/sagan.philip?igsh=MXdyNHFsZzZkNTdvZA==",
+    icon: <Instagram className="h-5 w-5" />,
+    label: "Instagram",
+  },
+  {
+    href: "https://www.linkedin.com/in/philip-sagan-896586267?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+    icon: <Linkedin className="h-5 w-5" />,
+    label: "LinkedIn",
+  },
+  {
+    href: "mailto: philip.chef13@gmail.com",
+    icon: <Mail className="h-5 w-5" />,
+    label: "Email",
+  },
+];
 
 export default function Footer({
   dictionary,
@@ -29,27 +51,14 @@ export default function Footer({
               {dictionary.socialLinks}
             </h3>
             <div className="flex space-x-4">
-              <SocialLink
-                href="https://github.com/yatochka-dev"
-                icon={<Github className="h-5 w-5" />}
-                label="GitHub"
-              />
-              <SocialLink
-                href="https://www.instagram.com/sagan.philip?igsh=MXdyNHFsZzZkNTdvZA=="
-                icon={<Instagram className="h-5 w-5" />}
-                label="Instagram"
-              />
-              <SocialLink
-                href="https://www.linkedin.com/in/philip-sagan-896586267?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
-                icon={<Linkedin className="h-5 w-5" />}
-                label="LinkedIn"
-              />
-
-              <SocialLink
-                href="mailto: philip.chef13@gmail.com"
-                icon={<Mail className="h-5 w-5" />}
-                label="Email"
-              />
+              {socialLinks.map((link) => (
+                <SocialLink
+                  key={link.label}
+                  href={link.href}
+                  icon={link.icon}
+                  label={link.label}
+                />
+              ))}
             </div>
           </div>
         </div>
