@@ -13,6 +13,7 @@ import { motion } from "framer-motion";
 import { ExternalLink } from "lucide-react";
 import { Dictionary, Language } from "@/lib/dictionaries";
 import { ProjectData } from "@/data/projects";
+import { LampContainer } from "@/components/ui/lamp"; // Remove the import of projectsData and receive it as a prop instead
 
 // Remove the import of projectsData and receive it as a prop instead
 export default function ProjectsSection({
@@ -27,13 +28,25 @@ export default function ProjectsSection({
   const containerRef = useRef(null);
 
   return (
-    <section id="projects" className="py-20">
+    <section id="projects" className="relative pb-20">
       <div className="container mx-auto px-4">
-        <div className="mb-12 text-center">
-          <h2 className="mb-4 text-3xl font-bold md:text-4xl">
+        <LampContainer
+          className={"hidden translate-y-40 scale-50 md:flex md:scale-100"}
+        >
+          <div className="text-center">
+            <h1 className="mb-4 text-3xl font-bold md:text-5xl">
+              {dictionary.title}
+            </h1>
+            <p className="mx-auto max-w-2xl text-xl text-muted-foreground">
+              {dictionary.description}
+            </p>
+          </div>
+        </LampContainer>
+        <div className="py-10 text-center md:hidden">
+          <h1 className="mb-4 text-3xl font-bold md:text-5xl">
             {dictionary.title}
-          </h2>
-          <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
+          </h1>
+          <p className="mx-auto max-w-2xl text-xl text-muted-foreground">
             {dictionary.description}
           </p>
         </div>

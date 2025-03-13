@@ -13,7 +13,7 @@ export default async function Home({
   const dict = await getDictionary(lang);
 
   return (
-    <div className="container mx-auto px-4">
+    <div className="mx-auto">
       {/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */}
       <HeroSection dictionary={dict.hero} />
       {/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */}
