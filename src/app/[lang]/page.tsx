@@ -1,4 +1,4 @@
-import { getDictionary, Language } from "@/lib/dictionaries";
+import { getDictionary, type Language } from "@/lib/dictionaries";
 import HeroSection from "@/components/hero-section";
 import ProjectsSection from "@/components/projects-section";
 import FaqSection from "@/components/faq-section";
@@ -16,6 +16,7 @@ export default async function Home({
     <div className="container mx-auto px-4">
       {/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */}
       <HeroSection dictionary={dict.hero} />
+      {/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */}
       {/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */}
       <ProjectsSection
         dictionary={dict.projects}

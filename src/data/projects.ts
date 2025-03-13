@@ -8,18 +8,19 @@ export interface ProjectData {
 export const projectsData: ProjectData[] = [
   {
     title: {
-      en: "E-Commerce Platform",
-      he: "פלטפורמת מסחר אלקטרוני",
-      ru: "Платформа электронной коммерции",
+      en: "Linker",
+      he: "לינקר",
+      ru: "Линкер",
     },
     description: {
-      en: "A modern e-commerce platform built with Next.js and Tailwind CSS, featuring product listings, cart functionality, and checkout.",
-      he: "פלטפורמת מסחר אלקטרוני מודרנית שנבנתה עם Next.js ו-Tailwind CSS, הכוללת רשימות מוצרים, פונקציונליות עגלה ותשלום.",
-      ru: "Современная платформа электронной коммерции, созданная с использованием Next.js и Tailwind CSS, с листингами продуктов, функциями корзины и оформлением заказа.",
+      en: "Linker is a simple and modern solution for sharing multiple links at once.",
+      he: "לינקר הוא פתרון פשוט ומודרני לשיתוף מספר קישורים בבת אחת.",
+      ru: "Линкер — это простое и современное решение для одновременного обмена несколькими ссылками.",
     },
-    image: "/placeholder.jpg?height=300&width=500",
-    link: "https://example.com/project1",
+    image: "/projects/linker.png",
+    link: "https://l.yatochka.dev/",
   },
+
   {
     title: {
       en: "Portfolio Website",
