@@ -1,23 +1,13 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { Link } from "@/i18n/navigation";
-import { usePathname } from "@/i18n/navigation";
+import { useEffect, useState } from "react";
+import { Link, usePathname } from "@/i18n/navigation";
 import { Button } from "@/components/ui/button";
 import { ModeToggle } from "@/components/mode-toggle";
 import LanguageSwitcher from "@/components/language-switcher";
 import { Menu, X } from "lucide-react";
 import { Dictionary } from "@/lib/dictionaries";
-import {
-  Drawer,
-  DrawerClose,
-  DrawerContent,
-  DrawerDescription,
-  DrawerFooter,
-  DrawerHeader,
-  DrawerTitle,
-  DrawerTrigger,
-} from "@/components/ui/drawer";
+import { Drawer, DrawerContent, DrawerTrigger } from "@/components/ui/drawer";
 
 export default function Navbar({
   lang,
@@ -56,7 +46,7 @@ export default function Navbar({
         <div className="flex h-16 items-center justify-between" dir={"ltr"}>
           <div className="flex items-center">
             <Link
-              href={`/${lang}`}
+              href={`/`}
               className="text-xl font-bold transition-colors hover:text-primary"
             >
               Yatochka
@@ -66,19 +56,19 @@ export default function Navbar({
           {/* Desktop Navigation */}
           <nav className="hidden items-center space-x-6 md:flex">
             <Link
-              href={`/${lang}`}
+              href={`/`}
               className="ml-6 text-sm font-medium transition-colors hover:text-primary"
             >
               {dictionary.home}
             </Link>
             <Link
-              href={`/${lang}#projects`}
+              href={`/#projects`}
               className="text-sm font-medium transition-colors hover:text-primary"
             >
               {dictionary.projects}
             </Link>
             <Link
-              href={`/${lang}#faq`}
+              href={`/#faq`}
               className="text-sm font-medium transition-colors hover:text-primary"
             >
               {dictionary.faq}
