@@ -1,33 +1,40 @@
-"use client"
+"use client";
 
-import { useRef } from "react"
-import { motion } from "framer-motion"
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
+import { useRef } from "react";
+import { motion } from "framer-motion";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 // Accept dictionary as a prop, don't import it
 export default function FaqSection({
   dictionary,
 }: {
   dictionary: {
-    title: string
+    title: string;
     items: Array<{
-      question: string
-      answer: string
-    }>
-  }
+      question: string;
+      answer: string;
+    }>;
+  };
 }) {
-  const containerRef = useRef(null)
+  const containerRef = useRef(null);
 
   return (
-    <section id="faq" className="py-20 bg-muted/30">
+    <section id="faq" className="bg-muted/30 py-20">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">{dictionary.title}</h2>
+        <div className="mb-12 text-center">
+          <h2 className="mb-4 text-3xl font-bold md:text-4xl">
+            {dictionary.title}
+          </h2>
         </div>
 
         <motion.div
           ref={containerRef}
-          className="max-w-3xl mx-auto"
+          className="mx-auto max-w-3xl"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
@@ -49,7 +56,9 @@ export default function FaqSection({
                 }}
               >
                 <AccordionItem value={`item-${index}`}>
-                  <AccordionTrigger className="text-left">{item.question}</AccordionTrigger>
+                  <AccordionTrigger className="text-left">
+                    {item.question}
+                  </AccordionTrigger>
                   <AccordionContent>{item.answer}</AccordionContent>
                 </AccordionItem>
               </motion.div>
@@ -58,6 +67,5 @@ export default function FaqSection({
         </motion.div>
       </div>
     </section>
-  )
+  );
 }
-

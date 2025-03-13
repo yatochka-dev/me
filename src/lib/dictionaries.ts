@@ -3,14 +3,14 @@ const dictionaries: Record<string, () => Promise<any>> = {
   en: () => import("../dictionaries/en.json").then((module) => module.default),
   he: () => import("../dictionaries/he.json").then((module) => module.default),
   ru: () => import("../dictionaries/ru.json").then((module) => module.default),
-}
+};
 
 export enum Language {
   en = "en",
   he = "he",
   ru = "ru",
 }
-export type Dictionary = Record<string, any>
+export type Dictionary = Record<string, any>;
 
 export const getDictionary = async (locale: string): Promise<Dictionary> => {
   // Add error handling and fallback
@@ -18,11 +18,11 @@ export const getDictionary = async (locale: string): Promise<Dictionary> => {
     if (!locale || !dictionaries[locale]) {
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-expect-error
-      return dictionaries.en() as Promise<Dictionary>
+      return dictionaries.en() as Promise<Dictionary>;
     }
-    return dictionaries[locale]() as Promise<Dictionary>
+    return dictionaries[locale]() as Promise<Dictionary>;
   } catch (error) {
-    console.error(`Error loading dictionary for locale ${locale}:`, error)
+    console.error(`Error loading dictionary for locale ${locale}:`, error);
     // Return a minimal dictionary as fallback
     return {
       navigation: {
@@ -48,7 +48,6 @@ export const getDictionary = async (locale: string): Promise<Dictionary> => {
         copyright: "© 2025 Portfolio. All rights reserved.",
         socialLinks: "Connect with me",
       },
-    }
+    };
   }
-}
-
+};

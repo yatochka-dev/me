@@ -1,4 +1,10 @@
-import React, { useEffect, useRef, useMemo, type ReactNode, type RefObject } from "react";
+import React, {
+  useEffect,
+  useRef,
+  useMemo,
+  type ReactNode,
+  type RefObject,
+} from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -47,8 +53,7 @@ const ScrollReveal: React.FC<ScrollRevealProps> = ({
     const el = containerRef.current;
     if (!el) return;
 
-    const scroller =
-      scrollContainerRef?.current ?? window;
+    const scroller = scrollContainerRef?.current ?? window;
 
     gsap.fromTo(
       el,

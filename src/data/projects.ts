@@ -90,5 +90,4 @@ export const projectsData: ProjectData[] = [
     image: "/placeholder.jpg?height=300&width=500",
     link: "https://example.com/project6",
   },
-]
-
+];

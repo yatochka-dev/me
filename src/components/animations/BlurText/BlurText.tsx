@@ -102,7 +102,7 @@ const BlurText: React.FC<BlurTextProps> = ({
               onAnimationComplete();
             }
           }
-        : animationFrom ?? defaultFrom,
+        : (animationFrom ?? defaultFrom),
       delay: i * delay,
       // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       config: { easing: easing as any },

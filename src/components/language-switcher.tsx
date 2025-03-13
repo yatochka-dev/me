@@ -1,33 +1,38 @@
-"use client"
+"use client";
 
-import { useRouter, usePathname } from "@/i18n/navigation"
-import { Button } from "@/components/ui/button"
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
-import { Globe } from "lucide-react"
+import { useRouter, usePathname } from "@/i18n/navigation";
+import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Globe } from "lucide-react";
 
 const languages = [
   { code: "en", name: "English" },
   { code: "he", name: "עברית" },
   { code: "ru", name: "Русский" },
-]
+];
 
 export default function LanguageSwitcher({
   currentLang,
   label,
 }: {
-  currentLang: string
-  label: string
+  currentLang: string;
+  label: string;
 }) {
-  const router = useRouter()
-  const pathname = usePathname()
+  const router = useRouter();
+  const pathname = usePathname();
 
   const switchLanguage = (locale: string) => {
     // Get the path without the locale prefix
     // const pathWithoutLocale = pathname.replace(/^\/(en|he|ru)/, "") || "/"
     // const newPath = `/${locale}${pathWithoutLocale}`
     // router.push(newPath)
-    router.replace(pathname, {locale})
-  }
+    router.replace(pathname, { locale });
+  };
 
   return (
     <DropdownMenu>
@@ -43,13 +48,11 @@ export default function LanguageSwitcher({
             key={language.code}
             onClick={() => switchLanguage(language.code)}
             className={currentLang === language.code ? "bg-muted" : ""}
-
           >
             {language.name}
           </DropdownMenuItem>
         ))}
       </DropdownMenuContent>
     </DropdownMenu>
-  )
+  );
 }
-

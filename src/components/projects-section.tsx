@@ -1,12 +1,18 @@
-"use client"
+"use client";
 
-import { useRef } from "react"
-import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { motion } from "framer-motion"
-import { ExternalLink } from "lucide-react"
-import {Dictionary, Language} from "@/lib/dictionaries";
-import {ProjectData} from "@/data/projects";
+import { useRef } from "react";
+import {
+  Card,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
+import { ExternalLink } from "lucide-react";
+import { Dictionary, Language } from "@/lib/dictionaries";
+import { ProjectData } from "@/data/projects";
 
 // Remove the import of projectsData and receive it as a prop instead
 export default function ProjectsSection({
@@ -14,23 +20,27 @@ export default function ProjectsSection({
   lang,
   projects,
 }: {
-  dictionary: Dictionary
-  lang: Language
-  projects: ProjectData[]
+  dictionary: Dictionary;
+  lang: Language;
+  projects: ProjectData[];
 }) {
-  const containerRef = useRef(null)
+  const containerRef = useRef(null);
 
   return (
     <section id="projects" className="py-20">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">{dictionary.title}</h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">{dictionary.description}</p>
+        <div className="mb-12 text-center">
+          <h2 className="mb-4 text-3xl font-bold md:text-4xl">
+            {dictionary.title}
+          </h2>
+          <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
+            {dictionary.description}
+          </p>
         </div>
 
         <motion.div
           ref={containerRef}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
@@ -48,18 +58,18 @@ export default function ProjectsSection({
         </motion.div>
       </div>
     </section>
-  )
+  );
 }
 
 function ProjectCard({
   project,
   lang,
 }: {
-  project: ProjectData
-  lang: Language
+  project: ProjectData;
+  lang: Language;
 }) {
-  const title = project.title[lang] || project.title.en
-  const description = project.description[lang] || project.description.en
+  const title = project.title[lang] || project.title.en;
+  const description = project.description[lang] || project.description.en;
 
   return (
     <motion.div
@@ -73,15 +83,17 @@ function ProjectCard({
           <img
             src={project.image || "/placeholder.svg?height=300&width=500"}
             alt={title}
-            className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+            className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
           />
         </div>
         <CardHeader>
           <CardTitle>{title}</CardTitle>
-          <CardDescription className="line-clamp-2">{description}</CardDescription>
+          <CardDescription className="line-clamp-2">
+            {description}
+          </CardDescription>
         </CardHeader>
         <CardFooter>
-          <Button asChild variant="outline" className="w-full group">
+          <Button asChild variant="outline" className="group w-full">
             <a href={project.link} target="_blank" rel="noopener noreferrer">
               <span>View Project</span>
               <ExternalLink className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -90,6 +102,5 @@ function ProjectCard({
         </CardFooter>
       </Card>
     </motion.div>
-  )
+  );
 }
-
