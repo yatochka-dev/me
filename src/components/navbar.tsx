@@ -115,19 +115,19 @@ export default function Navbar({
                 <nav className="flex flex-col items-center justify-center gap-4 py-20">
                   <div className={"flex-row space-x-7"}>
                     <Link
-                      href={`/${lang}`}
+                      href={`/`}
                       className="text-lg font-medium transition-colors hover:text-primary"
                     >
                       {dictionary.home}
                     </Link>
                     <Link
-                      href={`/${lang}#projects`}
+                      href={`/#projects`}
                       className="text-lg font-medium transition-colors hover:text-primary"
                     >
                       {dictionary.projects}
                     </Link>
                     <Link
-                      href={`/${lang}#faq`}
+                      href={`/#faq`}
                       className="text-lg font-medium transition-colors hover:text-primary"
                     >
                       {dictionary.faq}

@@ -30,7 +30,7 @@ export default function ProjectsSection({
   const containerRef = useRef(null);
   const { width } = useWindowSize();
   return (
-    <section id="projects" className="relative pb-20">
+    <section id="projects" className="max-md:pt-20pb-20 relative">
       <div className="container mx-auto px-4">
         <LampContainer className={"hidden translate-y-40 md:flex"}>
           <div className="text-center">
