@@ -14,6 +14,8 @@ import { ExternalLink } from "lucide-react";
 import { Dictionary, Language } from "@/lib/dictionaries";
 import { ProjectData } from "@/data/projects";
 import { LampContainer } from "@/components/ui/lamp"; // Remove the import of projectsData and receive it as a prop instead
+import { Spotlight } from "./ui/spotlight-new";
+import { useWindowSize } from "@uidotdev/usehooks"; // Remove the import of projectsData and receive it as a prop instead
 
 // Remove the import of projectsData and receive it as a prop instead
 export default function ProjectsSection({
@@ -26,13 +28,11 @@ export default function ProjectsSection({
   projects: ProjectData[];
 }) {
   const containerRef = useRef(null);
-
+  const { width } = useWindowSize();
   return (
     <section id="projects" className="relative pb-20">
       <div className="container mx-auto px-4">
-        <LampContainer
-          className={"hidden translate-y-40 scale-50 md:flex md:scale-100"}
-        >
+        <LampContainer className={"hidden translate-y-40 md:flex"}>
           <div className="text-center">
             <h1 className="mb-4 text-3xl font-bold md:text-5xl">
               {dictionary.title}
@@ -43,6 +43,13 @@ export default function ProjectsSection({
           </div>
         </LampContainer>
         <div className="py-10 text-center md:hidden">
+          <div
+            className={
+              "absolute inset-0 z-50 h-full max-w-[100vw] overflow-x-clip"
+            }
+          >
+            <Spotlight />
+          </div>
           <h1 className="mb-4 text-3xl font-bold md:text-5xl">
             {dictionary.title}
           </h1>
