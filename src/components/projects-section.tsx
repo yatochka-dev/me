@@ -15,7 +15,8 @@ import { Dictionary, Language } from "@/lib/dictionaries";
 import { ProjectData } from "@/data/projects";
 import { LampContainer } from "@/components/ui/lamp"; // Remove the import of projectsData and receive it as a prop instead
 import { Spotlight } from "./ui/spotlight-new";
-import { useWindowSize } from "@uidotdev/usehooks"; // Remove the import of projectsData and receive it as a prop instead
+import { useWindowSize } from "@uidotdev/usehooks";
+import Image from "next/image"; // Remove the import of projectsData and receive it as a prop instead
 
 // Remove the import of projectsData and receive it as a prop instead
 export default function ProjectsSection({
@@ -30,7 +31,7 @@ export default function ProjectsSection({
   const containerRef = useRef(null);
   const { width } = useWindowSize();
   return (
-    <section id="projects" className="max-md:pt-20pb-20 relative">
+    <section id="projects" className="relative pb-20 max-md:pt-20">
       <div className="container mx-auto px-4">
         <LampContainer className={"hidden translate-y-40 md:flex"}>
           <div className="text-center">
@@ -99,9 +100,10 @@ function ProjectCard({
       }}
     >
       <Card className="h-full overflow-hidden transition-all duration-300 hover:shadow-lg">
-        <div className="aspect-video overflow-hidden">
-          <img
-            src={project.image || "/placeholder.svg?height=300&width=500"}
+        <div className="relative aspect-video overflow-hidden">
+          <Image
+            fill
+            src={project.image ?? "/placeholder.svg?height=300&width=500"}
             alt={title}
             className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
           />
