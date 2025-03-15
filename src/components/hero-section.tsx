@@ -2,10 +2,15 @@
 
 import { useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
-import { motion, useInView, useAnimation } from "framer-motion";
-import Threads from "@/components/animations/Threads/Threads";
+import { useAnimation, useInView } from "framer-motion";
 import BlurText from "@/components/animations/BlurText/BlurText";
 import { useTheme } from "next-themes";
+import dynamic from "next/dynamic";
+
+const LazyThreads = dynamic(
+  () => import("@/components/animations/Threads/Threads"),
+  { ssr: false },
+);
 
 // Accept dictionary as a prop, don't import it
 export default function HeroSection({
@@ -76,7 +81,7 @@ export default function HeroSection({
           "absolute left-[0%] h-[400px] w-full max-md:top-[10%] md:h-[700px]"
         }
       >
-        <Threads
+        <LazyThreads
           color={resolvedTheme === "light" ? [0, 0, 0] : [255, 255, 255]}
           amplitude={1.5}
           distance={0.1}

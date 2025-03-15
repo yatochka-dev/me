@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useMemo, useRef } from "react";
 import {
   Card,
   CardDescription,
@@ -11,12 +11,21 @@ import {
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { ExternalLink } from "lucide-react";
-import { Dictionary, Language } from "@/lib/dictionaries";
-import { ProjectData } from "@/data/projects";
-import { LampContainer } from "@/components/ui/lamp"; // Remove the import of projectsData and receive it as a prop instead
-import { Spotlight } from "./ui/spotlight-new";
+import { type Dictionary, type Language } from "@/lib/dictionaries";
+import { type ProjectData } from "@/data/projects";
 import { useWindowSize } from "@uidotdev/usehooks";
-import Image from "next/image"; // Remove the import of projectsData and receive it as a prop instead
+import Image from "next/image";
+import dynamic from "next/dynamic"; // Remove the import of projectsData and receive it as a prop instead
+
+const LazyLamp = dynamic(
+  () => import("@/components/ui/lamp").then((mod) => mod.LampContainer),
+  { ssr: false },
+);
+
+const LazySpotlight = dynamic(
+  () => import("./ui/spotlight-new").then((mod) => mod.Spotlight),
+  { ssr: false },
+);
 
 // Remove the import of projectsData and receive it as a prop instead
 export default function ProjectsSection({
@@ -30,11 +39,33 @@ export default function ProjectsSection({
 }) {
   const containerRef = useRef(null);
   const { width } = useWindowSize();
+  const lamp = useMemo(() => {
+    if (!width) return false;
+    return width > 768;
+  }, [width]);
   return (
     <section id="projects" className="relative pb-20 max-md:pt-20">
       <div className="container mx-auto px-4">
-        <LampContainer className={"hidden translate-y-40 md:flex"}>
-          <div className="text-center">
+        {lamp ? (
+          <LazyLamp className={"hidden translate-y-40 md:flex"}>
+            <div className="text-center">
+              <h1 className="mb-4 text-3xl font-bold md:text-5xl">
+                {dictionary.title}
+              </h1>
+              <p className="mx-auto max-w-2xl text-xl text-muted-foreground">
+                {dictionary.description}
+              </p>
+            </div>
+          </LazyLamp>
+        ) : (
+          <div className="py-10 text-center md:hidden">
+            <div
+              className={
+                "absolute inset-0 z-50 h-full max-w-[100vw] overflow-x-clip"
+              }
+            >
+              <LazySpotlight />
+            </div>
             <h1 className="mb-4 text-3xl font-bold md:text-5xl">
               {dictionary.title}
             </h1>
@@ -42,22 +73,7 @@ export default function ProjectsSection({
               {dictionary.description}
             </p>
           </div>
-        </LampContainer>
-        <div className="py-10 text-center md:hidden">
-          <div
-            className={
-              "absolute inset-0 z-50 h-full max-w-[100vw] overflow-x-clip"
-            }
-          >
-            <Spotlight />
-          </div>
-          <h1 className="mb-4 text-3xl font-bold md:text-5xl">
-            {dictionary.title}
-          </h1>
-          <p className="mx-auto max-w-2xl text-xl text-muted-foreground">
-            {dictionary.description}
-          </p>
-        </div>
+        )}
 
         <motion.div
           ref={containerRef}
