@@ -6,6 +6,7 @@ import { useAnimation, useInView } from "framer-motion";
 import BlurText from "@/components/animations/BlurText/BlurText";
 import { useTheme } from "next-themes";
 import dynamic from "next/dynamic";
+import { useTranslations } from "next-intl";
 
 const LazyThreads = dynamic(
   () => import("@/components/animations/Threads/Threads"),
@@ -13,15 +14,9 @@ const LazyThreads = dynamic(
 );
 
 // Accept dictionary as a prop, don't import it
-export default function HeroSection({
-  dictionary,
-}: {
-  dictionary: {
-    title: string;
-    subtitle: string;
-    cta: string;
-  };
-}) {
+export default function HeroSection() {
+  const t = useTranslations("hero");
+
   const controls = useAnimation();
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
@@ -46,7 +41,7 @@ export default function HeroSection({
           {/*<h1 className="text-4xl md:text-6xl font-bold mb-6">{dictionary.title}</h1>*/}
           <div className={"flex flex-col items-center justify-center"}>
             <BlurText
-              text={dictionary.title}
+              text={t("title")}
               delay={150}
               animateBy="words"
               direction="top"
@@ -59,7 +54,7 @@ export default function HeroSection({
             className={"flex flex-col items-center justify-center text-center"}
           >
             <BlurText
-              text={dictionary.subtitle}
+              text={t("subtitle")}
               delay={120}
               animateBy="words"
               direction="bottom"
@@ -72,7 +67,7 @@ export default function HeroSection({
             onClick={scrollToProjects}
             className="mt-6 h-12 px-9 transition-transform hover:scale-105"
           >
-            {dictionary.cta}
+            {t("cta")}
           </Button>
         </div>
       </div>

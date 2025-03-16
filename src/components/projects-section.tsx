@@ -11,11 +11,12 @@ import {
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { ExternalLink } from "lucide-react";
-import { type Dictionary, type Language } from "@/lib/dictionaries";
+import { type Language } from "@/lib/dictionaries";
 import { type ProjectData } from "@/data/projects";
 import { useWindowSize } from "@uidotdev/usehooks";
 import Image from "next/image";
-import dynamic from "next/dynamic"; // Remove the import of projectsData and receive it as a prop instead
+import dynamic from "next/dynamic";
+import { useTranslations } from "next-intl"; // Remove the import of projectsData and receive it as a prop instead
 
 const LazyLamp = dynamic(
   () => import("@/components/ui/lamp").then((mod) => mod.LampContainer),
@@ -29,11 +30,9 @@ const LazySpotlight = dynamic(
 
 // Remove the import of projectsData and receive it as a prop instead
 export default function ProjectsSection({
-  dictionary,
   lang,
   projects,
 }: {
-  dictionary: Dictionary;
   lang: Language;
   projects: ProjectData[];
 }) {
@@ -43,6 +42,7 @@ export default function ProjectsSection({
     if (!width) return false;
     return width > 768;
   }, [width]);
+  const t = useTranslations("projects");
   return (
     <section id="projects" className="relative pb-20 max-md:pt-20">
       <div className="container mx-auto px-4">
@@ -50,10 +50,10 @@ export default function ProjectsSection({
           <LazyLamp className={"hidden translate-y-40 md:flex"}>
             <div className="text-center">
               <h1 className="mb-4 text-3xl font-bold md:text-5xl">
-                {dictionary.title}
+                {t("title")}
               </h1>
               <p className="mx-auto max-w-2xl text-xl text-muted-foreground">
-                {dictionary.description}
+                {t("description")}
               </p>
             </div>
           </LazyLamp>
@@ -67,10 +67,10 @@ export default function ProjectsSection({
               <LazySpotlight />
             </div>
             <h1 className="mb-4 text-3xl font-bold md:text-5xl">
-              {dictionary.title}
+              {t("title")}
             </h1>
             <p className="mx-auto max-w-2xl text-xl text-muted-foreground">
-              {dictionary.description}
+              {t("description")}
             </p>
           </div>
         )}

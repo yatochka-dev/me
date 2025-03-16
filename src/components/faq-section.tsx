@@ -8,28 +8,23 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { useMessages, useTranslations } from "next-intl";
 
 // Accept dictionary as a prop, don't import it
-export default function FaqSection({
-  dictionary,
-}: {
-  dictionary: {
-    title: string;
-    items: Array<{
-      question: string;
-      answer: string;
-    }>;
-  };
-}) {
+export default function FaqSection() {
   const containerRef = useRef(null);
+  const t = useTranslations("faq");
+  const messages = useMessages();
+
+  // @ts-ignore
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+  const keys = Object.keys(messages.faq.items);
 
   return (
     <section id="faq" className="bg-muted/30 py-20">
       <div className="container mx-auto px-4">
         <div className="mb-12 text-center">
-          <h2 className="mb-4 text-3xl font-bold md:text-4xl">
-            {dictionary.title}
-          </h2>
+          <h2 className="mb-4 text-3xl font-bold md:text-4xl">{t("title")}</h2>
         </div>
 
         <motion.div
@@ -47,7 +42,7 @@ export default function FaqSection({
           }}
         >
           <Accordion type="single" collapsible className="w-full">
-            {dictionary.items.map((item, index) => (
+            {keys.map((item, index) => (
               <motion.div
                 key={index}
                 variants={{
@@ -57,9 +52,11 @@ export default function FaqSection({
               >
                 <AccordionItem value={`item-${index}`}>
                   <AccordionTrigger className="text-left">
-                    {item.question}
+                    {t(`items.${item}.question`)}
                   </AccordionTrigger>
-                  <AccordionContent>{item.answer}</AccordionContent>
+                  <AccordionContent>
+                    {t(`items.${item}.answer`)}
+                  </AccordionContent>
                 </AccordionItem>
               </motion.div>
             ))}
