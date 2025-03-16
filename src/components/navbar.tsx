@@ -5,21 +5,15 @@ import { Link, usePathname } from "@/i18n/navigation";
 import { Button } from "@/components/ui/button";
 import { ModeToggle } from "@/components/mode-toggle";
 import LanguageSwitcher from "@/components/language-switcher";
-import { Dictionary } from "@/lib/dictionaries";
 import { Drawer, DrawerContent, DrawerTrigger } from "@/components/ui/drawer";
 import { AnimatedMenuIcon } from "@/components/animations/AnimatedMenuIcon/AnimatedMenuIcon";
+import { useTranslations } from "next-intl";
 
-export default function Navbar({
-  lang,
-  dictionary,
-}: {
-  lang: string;
-  dictionary: Dictionary;
-}) {
+export default function Navbar({ lang }: { lang: string }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
-
+  const t = useTranslations("navigation");
   // Handle scroll effect
   useEffect(() => {
     const handleScroll = () => {
@@ -59,19 +53,19 @@ export default function Navbar({
               href={`/`}
               className="ml-6 text-sm font-medium transition-colors hover:text-primary"
             >
-              {dictionary.home}
+              {t("home")}
             </Link>
             <Link
               href={`/#projects`}
               className="text-sm font-medium transition-colors hover:text-primary"
             >
-              {dictionary.projects}
+              {t("projects")}
             </Link>
             <Link
               href={`/#faq`}
               className="text-sm font-medium transition-colors hover:text-primary"
             >
-              {dictionary.faq}
+              {t("faq")}
             </Link>
           </nav>
 
@@ -79,7 +73,7 @@ export default function Navbar({
             <ModeToggle />
             <LanguageSwitcher
               currentLang={lang}
-              label={dictionary.languageSwitcher as string}
+              label={t("languageSwitcher")}
             />
           </div>
 
@@ -118,26 +112,26 @@ export default function Navbar({
                       href={`/`}
                       className="text-lg font-medium transition-colors hover:text-primary"
                     >
-                      {dictionary.home}
+                      {t("home")}
                     </Link>
                     <Link
                       href={`/#projects`}
                       className="text-lg font-medium transition-colors hover:text-primary"
                     >
-                      {dictionary.projects}
+                      {t("projects")}
                     </Link>
                     <Link
                       href={`/#faq`}
                       className="text-lg font-medium transition-colors hover:text-primary"
                     >
-                      {dictionary.faq}
+                      {t("faq")}
                     </Link>
                   </div>
                   <div className="flex items-center space-x-4 pt-2" dir={"ltr"}>
                     <ModeToggle />
                     <LanguageSwitcher
                       currentLang={lang}
-                      label={dictionary.languageSwitcher as string}
+                      label={t("languageSwitcher")}
                     />
                   </div>
                 </nav>

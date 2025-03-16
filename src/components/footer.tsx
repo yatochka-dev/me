@@ -4,6 +4,7 @@ import type React from "react";
 
 import { Link } from "@/i18n/navigation";
 import { Github, Instagram, Linkedin, Mail } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 const socialLinks = [
   {
@@ -28,28 +29,18 @@ const socialLinks = [
   },
 ];
 
-export default function Footer({
-  dictionary,
-}: {
-  dictionary: {
-    copyright: string;
-    socialLinks: string;
-  };
-}) {
+export default function Footer() {
+  const t = useTranslations("footer");
   return (
     <footer className="no-print bg-muted/40 py-12">
       <div className="container mx-auto px-4">
         <div className="flex flex-col items-center justify-between md:flex-row">
           <div className="mb-6 md:mb-0">
-            <p className="text-sm text-muted-foreground">
-              {dictionary.copyright}
-            </p>
+            <p className="text-sm text-muted-foreground">{t("copyright")}</p>
           </div>
 
           <div className="flex flex-col items-center md:items-end">
-            <h3 className="mb-4 text-sm font-medium">
-              {dictionary.socialLinks}
-            </h3>
+            <h3 className="mb-4 text-sm font-medium">{t("socialLinks")}</h3>
             <div className="flex space-x-4">
               {socialLinks.map((link) => (
                 <SocialLink
