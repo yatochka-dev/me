@@ -60,7 +60,7 @@ export const projectsData: ProjectData[] = [
       he: "אתר לחברה של סטודנטים, שמציג לחברות בשנה קבועה ומציגה את סביבת החברה.",
       ru: "Сайт организации, которая предоставляет студентам платформу для связи с коллегами и изучения их сообщества.",
     },
-    image: "/universe.png",
+    image: "/projects/universe.png",
     link: "https://universe-gamma-three.vercel.app/",
   },
 
