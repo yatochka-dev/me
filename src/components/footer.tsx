@@ -7,17 +7,19 @@ import { Github, Instagram, Linkedin, Mail } from "lucide-react";
 import { useTranslations, useLocale } from "next-intl";
 import { cn } from "@/lib/utils";
 
+//   {
+//     href: "https://www.instagram.com/sagan.philip?igsh=MXdyNHFsZzZkNTdvZA==",
+//     icon: <Instagram className="h-5 w-5" />,
+//     label: "Instagram",
+//   },
+
 const socialLinks = [
   {
     href: "https://github.com/yatochka-dev",
     icon: <Github className="h-5 w-5" />,
     label: "GitHub",
   },
-  {
-    href: "https://www.instagram.com/sagan.philip?igsh=MXdyNHFsZzZkNTdvZA==",
-    icon: <Instagram className="h-5 w-5" />,
-    label: "Instagram",
-  },
+
   {
     href: "https://www.linkedin.com/in/philip-sagan-896586267?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
     icon: <Linkedin className="h-5 w-5" />,
