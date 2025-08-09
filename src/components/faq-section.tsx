@@ -57,7 +57,7 @@ export default function FaqSection() {
                     {t(`items.${item}.question`)}
                   </AccordionTrigger>
                   <AccordionContent>
-                    {t(`items.${item}.answer`)} {item === "maintenance" && <Link href={`/${locale}}/maintenance`} className={"underline"}>{t("items.maintenance.link")}</Link>}
+                    {t(`items.${item}.answer`)} {item === "maintenance" && <Link href={`/${locale}/maintenance`} className={"underline"}>{t("items.maintenance.link")}</Link>}
                   </AccordionContent>
 
                 </AccordionItem>
