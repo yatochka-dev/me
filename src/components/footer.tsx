@@ -4,7 +4,8 @@ import type React from "react";
 
 import { Link } from "@/i18n/navigation";
 import { Github, Instagram, Linkedin, Mail } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
+import { cn } from "@/lib/utils";
 
 const socialLinks = [
   {
@@ -31,6 +32,7 @@ const socialLinks = [
 
 export default function Footer() {
   const t = useTranslations("footer");
+
   return (
     <footer className="no-print bg-muted/40 py-12">
       <div className="container mx-auto px-4">
@@ -41,9 +43,10 @@ export default function Footer() {
 
           <div className="flex flex-col items-center md:items-end">
             <h3 className="mb-4 text-sm font-medium">{t("socialLinks")}</h3>
-            <div className="flex space-x-4">
-              {socialLinks.map((link) => (
+            <div className="flex gap-4">
+              {socialLinks.map((link, index) => (
                 <SocialLink
+                    index={index}
                   key={link.label}
                   href={link.href}
                   icon={link.icon}
@@ -62,17 +65,24 @@ function SocialLink({
   href,
   icon,
   label,
+    index
 }: {
   href: string;
   icon: React.ReactNode;
   label: string;
+  index: number
 }) {
+
+  const locale = useLocale();
+  const isHebrew = locale === "he";
+
   return (
     <Link
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="text-muted-foreground transition-colors duration-200 hover:text-foreground"
+      className={cn("text-muted-foreground transition-colors duration-200 hover:text-foreground",
+      )}
       aria-label={label}
     >
       {icon}

@@ -27,9 +27,92 @@
       },
       "maintenance": {
         "question": "Do you offer maintenance after the project is complete?",
-        "answer": "Yes, I provide ongoing maintenance to keep your project running smoothly after it's done."
+        "answer": "Yes. You get a 30‑day bug‑fix warranty after launch. After that I offer on‑demand maintenance during business hours at my hourly rate; new features/redesigns are quoted separately. ",
+        "link": "More details here."
       }
     }
+  },
+  "maintenance": {
+    "title": "Maintenance & Support",
+    "summary": "30‑day bug‑fix warranty. After that: on‑demand support only, hourly, business hours.",
+    "availability": {
+      "title": "Availability",
+      "content": "I'm a high‑school student working part‑time. I reply fast Sun–Thu, 09:00–18:00 (Asia/Jerusalem). Exam weeks may slow me down; I'll be upfront."
+    },
+    "warranty": {
+      "title": "Warranty (included)",
+      "bullets": [
+        "30 days from acceptance.",
+        "Fix defects caused by my code that deviate from approved scope.",
+        "Remedy: fix or reasonable workaround."
+      ]
+    },
+    "scope": {
+      "title": "What maintenance covers",
+      "bullets": [
+        "Security & dependency updates (on request)",
+        "Minor fixes/tweaks and small content edits (<15 min)",
+        "Light monitoring if I have access; backups if hosting allows",
+        "Version upgrades (framework/CMS) when safe; otherwise I’ll quote a mini‑upgrade"
+      ]
+    },
+    "exclusions": {
+      "title": "Not included",
+      "bullets": [
+        "New features or redesigns",
+        "Content writing, SEO/ads, analytics accuracy",
+        "Hosting/third‑party outages",
+        "Breaking platform changes or end‑of‑life",
+        "Legal/regulatory compliance"
+      ]
+    },
+    "support": {
+      "title": "How on‑demand support works",
+      "bullets": [
+        "You send a request → I triage quickly",
+        "I share an estimate → you approve",
+        "I do the work → send a short summary & invoice",
+        "Hourly rate set in proposal; 15‑minute minimum; rush may add a surcharge"
+      ]
+    },
+    "targets": {
+      "title": "Targets (best‑effort, not SLA)",
+      "p1": "P1 (down): acknowledge ≤1 business day; start within 1–2 business days if I’m available.",
+      "p2": "P2 (degraded/bugs): acknowledge ≤1 business day; start within 2–3 business days.",
+      "p3": "P3 (minor/edits): schedule within a week."
+    },
+    "client": {
+      "title": "Client responsibilities",
+      "bullets": [
+        "Provide timely access (repo, hosting, CI/CD, third‑party accounts)",
+        "One point of contact and quick approvals",
+        "Keep domains/hosting/licenses current; keep backups if you self‑edit"
+      ]
+    },
+    "thirdParty": {
+      "title": "Third‑party & upgrades",
+      "bullets": [
+        "Third‑party costs are pass‑through",
+        "Breaking changes/EOL usually require a paid mini‑project"
+      ]
+    },
+    "billing": {
+      "title": "Billing & pause",
+      "bullets": [
+        "On‑demand work invoiced on completion (or weekly for bigger tasks)",
+        "Payment due on receipt; >7 days late → work pauses until paid"
+      ]
+    },
+    "handover": {
+      "title": "Handover",
+      "bullets": [
+        "You own the code after full payment",
+        "On request: brief runbook and one 30‑minute handoff call"
+      ]
+    },
+    "note": "No guarantees of uptime/traffic/revenue. Advice is best‑effort. If a request becomes a feature, I’ll quote it separately.",
+    "shortClause": "Includes a 30‑day bug‑fix warranty. After that, I provide on‑demand maintenance during business hours at my hourly rate; new features/redesigns are quoted separately.",
+    "cta": "Request Support"
   },
   "footer": {
     "copyright": "© 2025 Philip Sagan. All rights reserved.",

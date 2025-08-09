@@ -8,13 +8,15 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { useMessages, useTranslations } from "next-intl";
+import {useLocale, useMessages, useTranslations} from "next-intl";
+import Link from "next/link";
 
 // Accept dictionary as a prop, don't import it
 export default function FaqSection() {
   const containerRef = useRef(null);
   const t = useTranslations("faq");
   const messages = useMessages();
+  const locale = useLocale();
 
   // @ts-ignore
   // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
@@ -55,8 +57,9 @@ export default function FaqSection() {
                     {t(`items.${item}.question`)}
                   </AccordionTrigger>
                   <AccordionContent>
-                    {t(`items.${item}.answer`)}
+                    {t(`items.${item}.answer`)} {item === "maintenance" && <Link href={`/${locale}}/maintenance`} className={"underline"}>{t("items.maintenance.link")}</Link>}
                   </AccordionContent>
+
                 </AccordionItem>
               </motion.div>
             ))}
