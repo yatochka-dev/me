@@ -21,7 +21,7 @@ const socialLinks = [
   },
 
   {
-    href: "https://www.linkedin.com/in/philip-sagan-896586267?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+    href: "https://www.linkedin.com/in/philip-sagan-896586267",
     icon: <Linkedin className="h-5 w-5" />,
     label: "LinkedIn",
   },
